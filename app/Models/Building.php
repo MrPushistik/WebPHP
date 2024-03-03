@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
-    $fillable->['address', 'size', 'type', 'heat'. 'power', 'price', 'desc', 'status', 'url']
+    protected $fillable = ['address', 'size', 'type', 'heat'. 'power', 'price', 'desc', 'status', 'url'];
 }

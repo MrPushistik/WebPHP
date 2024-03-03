@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
-    use HasFactory;
+    $fillable->['address', 'size', 'type', 'heat'. 'power', 'price', 'desc', 'status', 'url']
 }

@@ -13,6 +13,10 @@ class Buildings extends Component
         $this->buildings = Building::all();
     }
 
+    public function viewBuilding($id){
+        $this->dispatch('building-view', id: $id);
+    }
+
     public function render()
     {
         return view('livewire.buildings.buildings');

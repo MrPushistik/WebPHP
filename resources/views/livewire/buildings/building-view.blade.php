@@ -1,0 +1,34 @@
+<div>
+    <div>Здание:</div>
+    <div class="grid grid-cols-9" > 
+        @isset($building)
+            <div>
+                {{$building->id}}
+            </div>
+            <div>
+                {{$building->address}}
+            </div>
+            <div>
+                {{$building->size}}
+            </div>
+            <div>
+                {{$building->type}}
+            </div>
+            <div>
+                {{$building->heat}}
+            </div>
+            <div>
+                {{$building->power}}
+            </div>
+            <div>
+                {{$building->price}}
+            </div>
+            <div>
+                {{$building->desc}}
+            </div>
+            <div>
+                {{$building->status}}
+            </div>
+        @endisset
+    </div>
+</div>

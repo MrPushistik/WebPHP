@@ -21,6 +21,12 @@ class BuildingEditor extends Component
         $this->form->setForm(Building::find($id));
     }
 
+    public function closeEditor(){
+        $this->id = null;
+        $this->form->reset();
+        $this->dispatch('building-editor-closed');
+    }
+
     public function render()
     {
         return view('livewire.buildings.building-editor');

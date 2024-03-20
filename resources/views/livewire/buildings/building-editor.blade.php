@@ -1,5 +1,4 @@
 <div>
-    <div class="grid grid-cols-9" > 
         @isset($id)
             <div>Здание #{{$id}}</div>
         
@@ -7,7 +6,7 @@
                 <div>
                     <button type="submit" class="btn mx-1 bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
                     <button type="reset" class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
-                    <button wire:click.prevent='reset2()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
+                    <button wire:click.prevent='closeEditor()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
                 </div>
                 <div>
                     <label>Адрес</label>
@@ -40,6 +39,5 @@
                 </div> --}}
             </form>
         @endisset
-    </div>
 </div>
 

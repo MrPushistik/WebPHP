@@ -26,5 +26,6 @@
             </div>
         </div>
     @endforeach
-     <livewire:buildings.building-view>
+     {{-- <livewire:buildings.building-view> --}}
+     <livewire:buildings.building-editor>
 </div>

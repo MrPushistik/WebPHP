@@ -8,7 +8,6 @@ use App\Models\Building;
 
 class BuildingForm extends Form
 { 
-    public ?Building $building;
     public $address;
     public $size;
     public $type;
@@ -19,7 +18,6 @@ class BuildingForm extends Form
     public $status;
 
     public function setForm($building){    
-        $this->building = $building;
         $this->address = $building->address;
         $this->size = $building->size;
         $this->type = $building->type;

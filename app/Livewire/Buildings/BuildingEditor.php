@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class BuildingEditor extends Component
 {
-    public $isEditMode;
+    public $tryDelete;
     public BuildingForm $form;
     public $id;
 
@@ -21,10 +21,30 @@ class BuildingEditor extends Component
         $this->form->setForm(Building::find($id));
     }
 
+    public function edit(){
+        $building = Building::find($this->id);
+        $building->update($this->form->all());
+        $this->closeEditor();
+    }
+
     public function closeEditor(){
         $this->id = null;
         $this->form->reset();
         $this->dispatch('building-editor-closed');
+    }
+
+    public function try2Delete(){
+        $this->tryDelete = true;
+    }
+
+    public function discardDelete(){
+        $this->tryDelete = false;
+    }
+
+    public function acceptDelete(){
+        Building::find($this->id)->delete();
+        $this->discardDelete();
+        $this->closeEditor();
     }
 
     public function render()

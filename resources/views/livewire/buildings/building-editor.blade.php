@@ -31,10 +31,6 @@
                     </select>
                 </div>
                 <div class="grid grid-cols-2">
-                    <label>Цена 1кВт*ч электроэнергии</label>
-                    <input type="number" min="1" placeholder="3" wire:model="form.power">
-                </div>
-                <div class="grid grid-cols-2">
                     <label>Цена аренды в месяц</label>
                     <input type="number" min="1" placeholder="7000" wire:model="form.price">
                 </div>

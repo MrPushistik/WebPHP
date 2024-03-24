@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
             $table->string('address', 500);
-            $table->integer('size');
+            $table->double('size', 4, 2);
             $table->enum('type', ['Торговое помещение', 'Склад'])->default('Торговое помещение');
             $table->enum('heat', ['Центральное отопление', 'Котельная'])->default('Центральное отопление');
-            $table->integer('power');
-            $table->integer('price');
+            $table->double('price', 8, 2);
             $table->string('desc', 1000);
             $table->enum('status', ['Свободно', 'Занято'])->default('Свободно');
-            $table->string('url', 500);
             $table->timestamps();
         });
     }

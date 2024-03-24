@@ -12,7 +12,6 @@ class BuildingForm extends Form
     public $size;
     public $type;
     public $heat;
-    public $power;
     public $price;
     public $desc;
     public $status;
@@ -22,7 +21,6 @@ class BuildingForm extends Form
         $this->size = $building->size;
         $this->type = $building->type;
         $this->heat = $building->heat;
-        $this->power = $building->power;
         $this->price =  $building->price;
         $this->desc = $building->desc;
         $this->status = $building->status;

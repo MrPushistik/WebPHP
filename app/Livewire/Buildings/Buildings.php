@@ -16,14 +16,20 @@ class Buildings extends Component
         $this->buildings = Building::all();
     }
 
-    public function viewBuilding($id){
+    public function editBuilding($id){
         $this->isClosedEditor = false;
-        $this->dispatch('building-view', id: $id);
+        $this->dispatch('edit-building', id: $id);
+    }
+
+    public function createBuilding(){
+        $this->isClosedEditor = false;
+        $this->dispatch('create-building');
     }
 
     #[On('building-editor-closed')]
     public function closeEditor(){
         $this->isClosedEditor = true;
+        $this->buildings = Building::all();
     }
 
     public function render()

@@ -1,5 +1,8 @@
 <div>
     @if($isClosedEditor)
+        <div>
+            <button wire:click='createBuilding()' class="btn mx-1 bg-green-400 text-white hover:bg-green-300">Добавить помещение</button>
+        </div>
         <div class="grid">
             <div class="grid grid-cols-7"> 
                 <div>
@@ -45,7 +48,7 @@
                         {{$building->status}}
                     </div>
                     <div>
-                        <button wire:click="viewBuilding({{$building->id}})" class="btn mx-1 bg-green-400 text-white hover:bg-green-300">Редактирование</button>
+                        <button wire:click="editBuilding({{$building->id}})" class="btn mx-1 bg-green-400 text-white hover:bg-green-300">Редактирование</button>
                     </div>
                 </div>
             @endforeach

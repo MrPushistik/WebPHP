@@ -1,20 +1,23 @@
 <div>
-        @isset($id)
-            <div>Здание #{{$id}}</div>
+        @if($tryEditOrCreate)
+
+            @isset($id)
+                <div>Здание #{{$id}}</div>
+            @endisset
+
+            <div class="grid">
+                <button wire:click.prevent="closeEditor()" class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
+            </div>
         
-            <form wire:submit='edit()' class="w-300">
-                <div class="grid grid-cols-3">
-                    <button type="submit" class="btn mx-1 bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
-                    <button wire:click.prevent='try2Delete()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
-                    <button wire:click.prevent='closeEditor()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
-                </div>
+            <form wire:submit="editOrCreate()" class="w-300">
                 <div class="grid grid-cols-2">
                     <label>Адрес</label>
                     <input type="text" placeholder="ул. Улица, д. 1" wire:model="form.address">
+                     @error('address') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="grid grid-cols-2">
                     <label>Площадь помещения</label>
-                    <input type="number" min="1" placeholder="24" wire:model="form.size">
+                    <input type="text" min="1" placeholder="24" wire:model="form.size">
                 </div>
                 <div class="grid grid-cols-2">
                     <label>Тип помещения</label>
@@ -32,7 +35,7 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <label>Цена аренды в месяц</label>
-                    <input type="number" min="1" placeholder="7000" wire:model="form.price">
+                    <input type="text" min="1" placeholder="7000" wire:model="form.price">
                 </div>
                 <div class="grid grid-cols-2">
                     <label>Описание</label>
@@ -45,8 +48,17 @@
                         <option value="Занято">Занято</option>
                     </select>
                 </div>
-            </form>
-        @endisset
+
+                <div class="grid">
+                    @if ($id == null)
+                        <button type="submit" class="btn mx-1 bg-green-400 text-white hover:bg-green-300">Создать</button>
+                    @else
+                        <button type="submit" class="btn mx-1 bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
+                        <button wire:click.prevent='try2Delete()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
+                    @endif
+                </div>
+            </form>            
+        @endif
 
         @if($tryDelete)
         <div class="fixed flex justify-center items-center top-0 left-0 insert-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">          

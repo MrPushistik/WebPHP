@@ -8,12 +8,25 @@ use App\Models\Building;
 
 class BuildingForm extends Form
 { 
+    #[Validate('required')] 
     public $address;
+
+    #[Validate('required')] 
     public $size;
+
+    #[Validate('required')] 
     public $type;
+
+    #[Validate('required')] 
     public $heat;
+
+    #[Validate('required')] 
     public $price;
+
+    #[Validate('required')] 
     public $desc;
+
+    #[Validate('required')] 
     public $status;
 
     public function setForm($building){    
@@ -24,6 +37,12 @@ class BuildingForm extends Form
         $this->price =  $building->price;
         $this->desc = $building->desc;
         $this->status = $building->status;
+    } 
+
+    public function setFormDefault(){    
+        $this->type = "Торговое помещение";
+        $this->heat = "Центральное отопление";
+        $this->status = "Свободно";
     } 
 }
 

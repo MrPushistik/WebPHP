@@ -11,24 +11,38 @@ use Illuminate\Support\Str;
 class BuildingEditor extends Component
 {
     public $tryDelete;
+    public $tryEditOrCreate;
     public BuildingForm $form;
     public $id;
 
 
-    #[On('building-view')]
-    public function setBuilding($id){
+    #[On('edit-building')]
+    public function launchEditor($id){
         $this->id = $id;
+        $this->tryEditOrCreate = true;
         $this->form->setForm(Building::find($id));
     }
 
-    public function edit(){
-        $building = Building::find($this->id);
-        $building->update($this->form->all());
+    #[On('create-building')]
+    public function launchCreator(){
+        $this->tryEditOrCreate = true;
+        $this->form->setFormDefault();
+    }
+
+    public function editOrCreate(){
+        if ($this->id != null){
+            $building = Building::find($this->id);
+            $building->update($this->form->all());
+        }
+        else{
+            Building::create($this->form->all());
+        }
         $this->closeEditor();
     }
 
     public function closeEditor(){
         $this->id = null;
+        $this->tryEditOrCreate = false;
         $this->form->reset();
         $this->dispatch('building-editor-closed');
     }

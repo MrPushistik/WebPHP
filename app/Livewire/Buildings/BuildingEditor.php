@@ -30,12 +30,14 @@ class BuildingEditor extends Component
     }
 
     public function editOrCreate(){
+        $data = $this->form->validate();
+
         if ($this->id != null){
             $building = Building::find($this->id);
-            $building->update($this->form->all());
+            $building->update($data);
         }
         else{
-            Building::create($this->form->all());
+            Building::create($data);
         }
         $this->closeEditor();
     }

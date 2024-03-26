@@ -8,25 +8,25 @@ use App\Models\Building;
 
 class BuildingForm extends Form
 { 
-    #[Validate('required')] 
+    #[Validate('require|max:500', message: 'Укажите адрес')] 
     public $address;
 
-    #[Validate('required')] 
+    #[Validate('required', message: 'Укажите площадь помещения')] 
     public $size;
 
-    #[Validate('required')] 
+    #[Validate('required', message: 'Укажите тип помещения')] 
     public $type;
 
-    #[Validate('required')] 
+    #[Validate('required', message: 'Укажите тип отопления')] 
     public $heat;
 
-    #[Validate('required')] 
+    #[Validate('required', message: 'Укажите цену аренды помещения')] 
     public $price;
 
-    #[Validate('required')] 
+    #[Validate('required|max:1000', message: 'Укажите описание помещения')] 
     public $desc;
 
-    #[Validate('required')] 
+    #[Validate('required', message: 'Укажите статус помещения')] 
     public $status;
 
     public function setForm($building){    

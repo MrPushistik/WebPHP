@@ -9,16 +9,24 @@
                 <button wire:click.prevent="closeEditor()" class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
             </div>
         
-            <form wire:submit="editOrCreate()" class="w-300">
-                <div class="grid grid-cols-2">
-                    <label>Адрес</label>
-                    <input type="text" placeholder="ул. Улица, д. 1" wire:model="form.address">
-                     @error('address') <span class="error">{{ $message }}</span> @enderror
+            <form wire:submit.prevent="editOrCreate()" class="w-300">
+
+                <div class="grid">
+                    <div class="grid grid-cols-2">
+                        <label class="w-300">Адрес</label>
+                        <input type="text" placeholder="ул. Улица, д. 1" wire:model="form.address">
+                    </div>
+                    @error('form.address') <div class="text-end text-red-600">{{$message}}</div> @enderror
                 </div>
-                <div class="grid grid-cols-2">
-                    <label>Площадь помещения</label>
-                    <input type="text" min="1" placeholder="24" wire:model="form.size">
-                </div>
+
+                <div class="grid">
+                    <div class="grid grid-cols-2">
+                        <label>Площадь помещения</label>
+                        <input type="text" min="1" placeholder="24" wire:model="form.size">
+                    </div>
+                    @error('form.size') <div class="text-end text-red-600">{{$message}}</div> @enderror
+                <div>
+
                 <div class="grid grid-cols-2">
                     <label>Тип помещения</label>
                     <select wire:model="form.type">
@@ -26,6 +34,7 @@
                         <option value="Склад">Склад</option>
                     </select>
                 </div>
+
                 <div class="grid grid-cols-2">
                     <label>Тип отопления</label>
                     <select wire:model="form.heat">
@@ -33,14 +42,23 @@
                         <option value="Котельная">Котельная</option>
                     </select>
                 </div>
-                <div class="grid grid-cols-2">
-                    <label>Цена аренды в месяц</label>
-                    <input type="text" min="1" placeholder="7000" wire:model="form.price">
-                </div>
-                <div class="grid grid-cols-2">
-                    <label>Описание</label>
-                    <input type="text" min="1" placeholder="7000" wire:model="form.desc">
-                </div>
+
+                <div class="grid">
+                    <div class="grid grid-cols-2">
+                        <label>Цена аренды в месяц</label>
+                        <input type="text" min="1" placeholder="7000" wire:model="form.price">
+                    </div>
+                    @error('form.price') <div class="text-end text-red-600">{{$message}}</div> @enderror
+                <div>
+
+                <div class="grid">  
+                    <div class="grid grid-cols-2">
+                        <label>Описание</label>
+                        <input type="text" min="1" placeholder="7000" wire:model="form.desc">
+                    </div>
+                     @error('form.desc') <div class="text-end text-red-600">{{$message}}</div> @enderror
+                <div>
+
                 <div class="grid grid-cols-2">
                     <label>Статус</label>
                     <select wire:model="form.status">

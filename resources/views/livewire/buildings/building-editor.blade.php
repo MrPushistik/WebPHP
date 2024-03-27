@@ -1,78 +1,75 @@
 <div>
         @if($tryEditOrCreate)
 
-            @isset($id)
-                <div>Здание #{{$id}}</div>
-            @endisset
-
-            <div class="grid">
-                <button wire:click.prevent="closeEditor()" class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Закрыть</button>
+            <div class="grid grid-cols-6 gap-1">         
+                <p class='col-span-5 font-bold'>@if($id == null) Новое помещение @else Помещение # {{$id}} @endif</p>
+                <button wire:click.prevent="closeEditor()" class="btn bg-red-400 text-white mb-5 hover:bg-red-300">Закрыть</button>
             </div>
         
             <form wire:submit.prevent="editOrCreate()" class="w-300">
 
-                <div class="grid">
-                    <div class="grid grid-cols-2">
-                        <label class="w-300">Адрес</label>
-                        <input type="text" placeholder="ул. Улица, д. 1" wire:model="form.address">
+                <div>
+                    <div class="grid grid-cols-6 mb-1">
+                        <label class="myLabel">Адрес</label>
+                        <input class='col-span-5' type="text" placeholder="ул. Улица, д. 1" wire:model.live="form.address">
                     </div>
                     @error('form.address') <div class="text-end text-red-600">{{$message}}</div> @enderror
                 </div>
 
                 <div class="grid">
-                    <div class="grid grid-cols-2">
-                        <label>Площадь помещения</label>
-                        <input type="text" min="1" placeholder="24" wire:model="form.size">
+                    <div class="grid grid-cols-6 mb-1">
+                        <label class="myLabel">Площадь помещения</label>
+                        <input class='col-span-5' type="text" min="1" placeholder="24" wire:model.live="form.size">
                     </div>
                     @error('form.size') <div class="text-end text-red-600">{{$message}}</div> @enderror
                 <div>
 
-                <div class="grid grid-cols-2">
-                    <label>Тип помещения</label>
-                    <select wire:model="form.type">
+                <div class="grid grid-cols-6 mb-1">
+                    <label class="myLabel">Тип помещения</label>
+                    <select class='col-span-5' wire:model="form.type">
                         <option value="Торговое помещение">Торговое помещение</option>
                         <option value="Склад">Склад</option>
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2">
-                    <label>Тип отопления</label>
-                    <select wire:model="form.heat">
+                <div class="grid grid-cols-6 mb-1">
+                    <label class="myLabel">Тип отопления</label>
+                    <select class='col-span-5' wire:model="form.heat">
                         <option value="Центральное отопление">Центральное отопление</option>
                         <option value="Котельная">Котельная</option>
                     </select>
                 </div>
 
                 <div class="grid">
-                    <div class="grid grid-cols-2">
-                        <label>Цена аренды в месяц</label>
-                        <input type="text" min="1" placeholder="7000" wire:model="form.price">
+                    <div class="grid grid-cols-6 mb-1">
+                        <label class="myLabel">Цена аренды в месяц</label>
+                        <input class='col-span-5' type="text" min="1" placeholder="7000" wire:model.live="form.price">
                     </div>
                     @error('form.price') <div class="text-end text-red-600">{{$message}}</div> @enderror
                 <div>
 
                 <div class="grid">  
-                    <div class="grid grid-cols-2">
-                        <label>Описание</label>
-                        <input type="text" min="1" placeholder="7000" wire:model="form.desc">
+                    <div class="grid grid-cols-6 mb-1">
+                        <label class="myLabel">Описание</label>
+                        <input class='col-span-5' type="text" min="1" placeholder="7000" wire:model.live="form.desc">
                     </div>
                      @error('form.desc') <div class="text-end text-red-600">{{$message}}</div> @enderror
                 <div>
 
-                <div class="grid grid-cols-2">
-                    <label>Статус</label>
-                    <select wire:model="form.status">
+                <div class="grid grid-cols-6">
+                    <label class="myLabel">Статус</label>
+                    <select class='col-span-5' wire:model="form.status">
                         <option value="Свободно">Свободно</option>
                         <option value="Занято">Занято</option>
                     </select>
                 </div>
 
-                <div class="grid">
+                <div class="mt-5 grid grid-cols-6 gap-1">
                     @if ($id == null)
-                        <button type="submit" class="btn mx-1 bg-green-400 text-white hover:bg-green-300">Создать</button>
+                        <button type="submit" class="btn col-start-6 bg-green-400 text-white hover:bg-green-300">Создать</button>
                     @else
-                        <button type="submit" class="btn mx-1 bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
-                        <button wire:click.prevent='try2Delete()' class="btn mx-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
+                        <button wire:click.prevent='try2Delete()' class="btn col-end-6 col-span-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
+                        <button type="submit" class="btn bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
                     @endif
                 </div>
             </form>            
@@ -88,7 +85,7 @@
                 Вы точно хотите удалить помещение? Это действие нельзя будет отменить!
                 </div>
                 <div class="flex flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
-                <button wire:click='discardDelete()' class="px-6 py-3 mr-1 font-sans text-xs font-bold text-red-500 uppercase transition-all rounded-lg middle none center hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                <button wire:click.prevent='discardDelete()' class="px-6 py-3 mr-1 font-sans text-xs font-bold text-red-500 uppercase transition-all rounded-lg middle none center hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Нет
                 </button>
                 <button wire:click='acceptDelete()' class="px-6 py-3 mr-1 font-sans text-xs font-bold text-green-500 uppercase transition-all rounded-lg middle none center hover:bg-green-500/10 active:bg-green-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">

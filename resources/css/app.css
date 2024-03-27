@@ -5,3 +5,11 @@
 .btn{
     @apply px-1 py-1 rounded;
 }
+
+.ctext{
+    @apply flex items-center justify-center;
+}
+
+.myLabel{
+    @apply flex items-center justify-center bg-slate-500 text-white rounded-l;
+}

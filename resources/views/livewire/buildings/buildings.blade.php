@@ -1,9 +1,13 @@
 <div>
     @if($isClosedEditor)
+
+        @can('create buildings')
         <div class="pb-4">
             <button wire:click='createBuilding()' class="btn h-10 w-60 bg-green-400 text-white hover:bg-green-300">Добавить помещение</button>
         </div>
+        @endcan
 
+        @can('read buildings')
         <div>
             <div class="grid grid-cols-9 mt-1 mb-1 rounded h-10 bg-slate-500"> 
                 <p class="col-span-1 text-white flex flex-col justify-center items-center border-r-2">Id</p>
@@ -41,6 +45,7 @@
                 </div>
             @endforeach
          </div>
+        @endcan
     @endif
 
     <livewire:buildings.building-editor>

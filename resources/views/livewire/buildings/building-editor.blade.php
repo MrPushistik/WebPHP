@@ -68,8 +68,12 @@
                     @if ($id == null)
                         <button type="submit" class="btn col-start-6 bg-green-400 text-white hover:bg-green-300">Создать</button>
                     @else
-                        <button wire:click.prevent='try2Delete()' class="btn col-end-6 col-span-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
-                        <button type="submit" class="btn bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
+                        @can('delete buildings')
+                            <button wire:click.prevent='try2Delete()' class="btn col-end-6 col-span-1 bg-red-400 text-white hover:bg-red-300">Удалить</button>
+                        @endcan
+                        @can('edit buildings')
+                            <button type="submit" class="btn bg-yellow-400 text-white hover:bg-yellow-300">Изменить</button>
+                        @endcan
                     @endif
                 </div>
             </form>            

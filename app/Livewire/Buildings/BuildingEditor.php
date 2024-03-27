@@ -19,14 +19,14 @@ class BuildingEditor extends Component
     #[On('edit-building')]
     public function launchEditor($id){
         $this->id = $id;
-        $this->tryEditOrCreate = true;
         $this->form->setForm(Building::find($id));
+        $this->tryEditOrCreate = true;   
     }
 
     #[On('create-building')]
     public function launchCreator(){
-        $this->tryEditOrCreate = true;
         $this->form->setFormDefault();
+        $this->tryEditOrCreate = true;   
     }
 
     public function editOrCreate(){

@@ -26,6 +26,10 @@ Route::get('/rolesManager', function () {
     return view('roles');
 })->middleware(['auth', 'verified'])->name('roles');
 
+Route::get('/leadsManager', function () {
+    return view('leads');
+})->middleware(['auth', 'verified'])->name('leads');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

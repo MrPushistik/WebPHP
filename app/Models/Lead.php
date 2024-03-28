@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lead extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = ['name', 'surname', 'patronymic', 'email', 'phone'];
 
     public function rents(){

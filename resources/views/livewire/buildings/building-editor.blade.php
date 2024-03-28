@@ -1,11 +1,11 @@
 <div>
         @if($tryEditOrCreate)
 
-            <div class="grid grid-cols-6 gap-1">         
+            <div class="grid grid-cols-6 gap-1">
                 <p class='col-span-5 font-bold'>@if($id == null) Новое помещение @else Помещение # {{$id}} @endif</p>
                 <button wire:click.prevent="closeEditor()" class="btn bg-red-400 text-white mb-5 hover:bg-red-300">Закрыть</button>
             </div>
-        
+
             <form wire:submit.prevent="editOrCreate()" class="w-300">
 
                 <div>
@@ -22,7 +22,7 @@
                         <input class='col-span-5' type="text" min="1" placeholder="24" wire:model.live="form.size">
                     </div>
                     @error('form.size') <div class="text-end text-red-600">{{$message}}</div> @enderror
-                <div>
+                </div>
 
                 <div class="grid grid-cols-6 mb-1">
                     <label class="myLabel">Тип помещения</label>
@@ -46,15 +46,15 @@
                         <input class='col-span-5' type="text" min="1" placeholder="7000" wire:model.live="form.price">
                     </div>
                     @error('form.price') <div class="text-end text-red-600">{{$message}}</div> @enderror
-                <div>
+                </div>
 
-                <div class="grid">  
+                <div class="grid">
                     <div class="grid grid-cols-6 mb-1">
                         <label class="myLabel">Описание</label>
                         <input class='col-span-5' type="text" min="1" placeholder="7000" wire:model.live="form.desc">
                     </div>
                      @error('form.desc') <div class="text-end text-red-600">{{$message}}</div> @enderror
-                <div>
+                </div>
 
                 <div class="grid grid-cols-6">
                     <label class="myLabel">Статус</label>
@@ -76,11 +76,11 @@
                         @endcan
                     @endif
                 </div>
-            </form>            
+            </form>
         @endif
 
         @if($tryDelete)
-        <div class="fixed flex justify-center items-center top-0 left-0 insert-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">          
+        <div class="fixed flex justify-center items-center top-0 left-0 insert-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
             <div class="relative m-4 w-2/5 min-w-[40%] max-w-[40%] rounded-lg bg-white font-sans text-base font-light leading-relaxed text-blue-gray-500 antialiased shadow-2xl">
                 <div class="flex items-center p-4 font-sans text-2xl antialiased font-semibold leading-snug shrink-0 text-blue-gray-900">
                 Удаление помещения
@@ -97,7 +97,7 @@
                 </button>
                 </div>
             </div>
-        </div>  
+        </div>
         @endif
 </div>
 

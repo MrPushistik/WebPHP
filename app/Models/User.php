@@ -48,4 +48,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function rent(){
+        return $this->belongTo(Rent::class, "user_id");
+    }
 }

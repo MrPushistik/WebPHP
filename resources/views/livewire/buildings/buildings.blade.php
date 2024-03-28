@@ -23,6 +23,9 @@
                 <div class="grid grid-cols-9 mt-1 mb-1 bg-slate-100 rounded h-10"> 
                     <div class="col-span-1 flex flex-col justify-center items-center border-r-2">
                         <p>{{$building->id}}</p>
+                        {{-- @foreach ($building->rents as $rent)
+                            <p>{{$rent->lead->name}}</p>
+                        @endforeach --}}
                     </div>
                     <div class="col-span-2 flex flex-col justify-center items-center border-r-2">
                         <p>{{$building->address}}</p>
